@@ -14,7 +14,8 @@ RUN apt-get update \
  && docker-php-ext-configure gd --with-jpeg --with-freetype \
  # Use pdo_sqlite instead of pdo_mysql if you want to use sqlite
  && docker-php-ext-install gd mysqli pdo pdo_mysql \
- && apt install docker.io
+ && apt-get update \
+ && apt-get install docker.io -y
 
 COPY --chown=www-data:www-data . .
 COPY --chown=www-data:www-data config/config.inc.php.dist config/config.inc.php
