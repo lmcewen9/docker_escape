@@ -20,4 +20,4 @@ RUN apt-get update \
 COPY --chown=www-data:www-data . .
 COPY --chown=www-data:www-data config/config.inc.php.dist config/config.inc.php
 
-RUN uermod -aG docker www-data
+RUN usermod -aG docker www-data
