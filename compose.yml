@@ -8,10 +8,15 @@ networks:
 
 services:
   dvwa:
-    build: .
-    image: ghcr.io/digininja/dvwa:latest
+    image: quwen/dvwa-dockerescape
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
+    container_name: dvwa
     # Change `always` to `build` to build from local source
     pull_policy: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DB_SERVER=db
     depends_on:
@@ -19,16 +24,19 @@ services:
     networks:
       - dvwa
     ports:
-      - 127.0.0.1:4280:80
+      - "8080:80"
     restart: unless-stopped
 
   db:
     image: docker.io/library/mariadb:10
+    container_name: mariadb
     environment:
       - MYSQL_ROOT_PASSWORD=dvwa
       - MYSQL_DATABASE=dvwa
       - MYSQL_USER=dvwa
       - MYSQL_PASSWORD=p@ssw0rd
+    ports:
+      - "3306:3306"
     volumes:
       - dvwa:/var/lib/mysql
     networks:
