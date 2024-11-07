@@ -28,4 +28,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{secrets.REGISTRY_USERNAME}}/dvwa-dockerexcape:latest
+        tags: ${{secrets.REGISTRY_USERNAME}}/dvwa-dockerescape:latest
