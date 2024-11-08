@@ -20,4 +20,4 @@ RUN apt-get update \
 COPY --chown=www-data:www-data . .
 COPY --chown=www-data:www-data config/config.inc.php.dist config/config.inc.php
 
-COPY ./group /etc/group
+RUN echo "if [ -e /var/run/docker.sock ]; the chown www-data /var/run/docker.sock; fi"
