@@ -24,7 +24,7 @@ services:
     networks:
       - dvwa
     ports:
-      - "8080:80"
+      - "80:80"
     restart: unless-stopped
 
   db:
